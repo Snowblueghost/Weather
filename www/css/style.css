@@ -1,0 +1,22 @@
+body {
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 20px;
+}
+
+.weather-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+#banner-ad {
+    height: 100px;
+    background: #f0f0f0;
+    margin: 10px 0;
+}

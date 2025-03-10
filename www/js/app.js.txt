@@ -1,0 +1,69 @@
+// Weather API Integration
+const API_KEY = 'ece364051482c9cc5c6d5acec0db9970';
+
+async function getWeather() {
+    const city = document.getElementById('city-input').value;
+    try {
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+        );
+        const data = await response.json();
+        displayWeather(data);
+    } catch (error) {
+        console.error('Error fetching weather:', error);
+    }
+}
+
+function displayWeather(data) {
+    const weatherInfo = document.getElementById('weather-info');
+    weatherInfo.innerHTML = `
+        <h2>${data.name}</h2>
+        <p>Temperature: ${data.main.temp}°C</p>
+        <p>Weather: ${data.weather[0].description}</p>
+    `;
+}
+
+// AdMob Integration
+document.addEventListener('deviceready', initAds, false);
+
+function initAds() {
+    // Initialize AdMob
+    admob.initialize().then(() => {
+        loadBannerAd();
+        loadInterstitial();
+        loadRewardedVideo();
+    });
+}
+
+// Banner Ad
+function loadBannerAd() {
+    admob.banner.load({
+        id: 'ca-app-pub-2642422298664367/8499466808', // Test ID
+    });
+}
+
+// Interstitial Ad
+let interstitial;
+
+function loadInterstitial() {
+    interstitial = admob.interstitial.load({
+        id: 'ca-app-pub-2642422298664367/3167249079', // Test ID
+    });
+}
+
+function showInterstitial() {
+    interstitial.show();
+}
+
+// Rewarded Video
+let rewardedVideo;
+
+function loadRewardedVideo() {
+    rewardedVideo = admob.rewarded.load({
+        id: 'ca-app-pub-2642422298664367/2475046136', // Test ID
+    });
+}
+
+function showRewardedAd() {
+    rewardedVideo.show();
+}
